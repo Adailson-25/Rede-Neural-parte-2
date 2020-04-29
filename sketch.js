@@ -2,7 +2,7 @@ var train = true;
 
 function setup() {
     createCanvas(500, 500);
-    background(0);
+    background(255);
     nn = new RedeNeural(2, 3, 1);
     dataset = {
         inputs:
@@ -24,9 +24,13 @@ function draw() {
             var index = floor(random(4));
             nn.train(dataset.inputs[index], dataset.outputs[index]);
         }
-        if (nn.predict([0, 0])[0] < 0.04 && nn.predict([1, 0])[0] > 0.98) {
+        var1 = nn.predict([0, 0])[0];
+        var2 = nn.predict([0, 1])[0];
+        if (var1 < 0.04 &&  var2 > 0.98) {
             train = false;
             console.log("terminou");
+            console.log(var1);
+            console.log(var2);
         }
     }
 }
